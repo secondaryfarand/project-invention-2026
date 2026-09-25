@@ -1,0 +1,97 @@
+.sidebar {
+  width: 320px;
+  background-color: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #e0e7ff;
+  color: #3730a3;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 8px 0;
+}
+
+.description {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 0 24px 0;
+  line-height: 1.4;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.organSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.organButton {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  color: #1e293b;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.organButton:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.resetButton {
+  composes: organButton;
+  margin-top: 8px;
+  background-color: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+.resetButton:hover {
+  background-color: #cbd5e1;
+}
+
+.authorCard {
+  margin-top: 24px;
+  font-size: 12px;
+  color: #94a3b8;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 16px;
+}
+
+.authorLink {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.authorLink:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,147 @@
+.heroSection {
+  padding: 3rem 1.5rem 2rem;
+  max-width: 1100px;
+  margin:  4rem auto 0;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+  gap: 2rem;
+}
+
+.mainTitle {
+  font-size: 2.35rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #0f172a;
+  letter-spacing: -0.04em;
+}
+
+.gradientText {
+  background: linear-gradient(90deg, #18181b 0%, #18181b 55%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.ratingBox {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #f8fafc;
+  padding: 0.75rem 1.25rem;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -8px;
+  border: 2px solid #ffffff;
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}
+
+.stars {
+  color: #ff6b00;
+  font-size: 0.85rem;
+}
+
+.ratingText span {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Card Hero Gambar seperti di Desain Gambar */
+.heroCard {
+  height: 420px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.cardOverlay {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  z-index: 2;
+}
+
+.tagGroup {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.cardText {
+  max-width: 380px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.cardText p {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 868px) {
+  .topRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mainTitle {
+    font-size: 2rem;
+  }
+
+  .heroCard {
+    height: 320px;
+  }
+
+  .cardOverlay {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .cardText {
+    align-items: flex-start;
+    text-align: left;
+  }
+}

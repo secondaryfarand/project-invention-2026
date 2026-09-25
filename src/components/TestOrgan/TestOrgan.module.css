@@ -1,0 +1,205 @@
+/* --- BASE CONTAINER (DESKTOP) --- */
+.container {
+  display: grid;
+  grid-template-columns: 320px 1fr 380px; /* 3 Kolom Responsif */
+  gap: 20px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.sidebar, .infoPanel {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* --- VIEWER 3D CONTAINER --- */
+/* .viewerContainer {
+  background: #f1f5f9;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+  border: 1px solid #e2e8f0;
+  min-height: 450px;
+}
+
+.iframeWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.iframe {
+  position: absolute;
+  width: 100%;
+  height: calc(100% + 80px);
+  top: -40px;
+  left: 0;
+  border: none;
+} */
+
+/* --- ELEMEN UI --- */
+.badge {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.title {
+  font-size: 22px;
+  color: #0f172a;
+  margin: 12px 0 6px 0;
+  font-weight: 700;
+}
+
+.description {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.organSection {
+  margin-top: 20px;
+}
+
+.sectionTitle {
+  font-size: 12px;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #3b82f6;
+  padding-bottom: 6px;
+  font-weight: 700;
+}
+
+.organButton {
+  width: 100%;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  color: #334155;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+
+.organButton:hover {
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+.authorCard {
+  margin-top: auto;
+  padding-top: 16px;
+  font-size: 11px;
+  color: #94a3b8;
+  text-align: center;
+}
+
+.authorLink {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.wikiTitle {
+  font-size: 20px;
+  color: #1e3a8a;
+  margin: 0 0 12px 0;
+  font-weight: 700;
+}
+
+.wikiImg {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #e2e8f0;
+}
+
+.wikiText {
+  color: #334155;
+  line-height: 1.6;
+  font-size: 13px;
+}
+
+
+
+/* Area Frame 3D / Viewer */
+.viewerContainer {
+  flex: 1;
+  position: relative;
+  background-color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; 
+
+}
+
+
+.iframeWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.iframe {
+  position: absolute;
+  /* Memperbesar iframe lebih tinggi dan lebar dari container */
+  width: 100%;
+  height: calc(100% + 90px); /* Tambah tinggi untuk mendorong bar atas & bawah ke luar */
+  top: -45px;                 /* Sembunyikan bar atas sejauh 45px */
+  left: 0;
+  border: none;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 16px;
+    padding: 12px;
+  }
+
+  .sidebar, .infoPanel {
+    width: 100%;
+    overflow-y: visible;
+  }
+
+  .viewerContainer {
+    width: 100%;
+    height: 65vh; 
+    min-height: 400px;
+    order: -1; 
+  }
+
+  .iframe {
+    height: calc(100% + 100px);
+    top: -60px;
+  }
+}

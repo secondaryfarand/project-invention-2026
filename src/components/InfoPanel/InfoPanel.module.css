@@ -1,0 +1,58 @@
+.infoPanel {
+  width: 340px;
+  background-color: #ffffff;
+  border-left: 1px solid #e2e8f0;
+  padding: 24px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 16px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.statusText {
+  color: #475569;
+  font-style: italic;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+.placeholderText {
+  color: #94a3b8;
+  font-style: italic;
+  font-size: 14px;
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+.content {
+  margin-top: 16px;
+}
+
+.wikiTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 12px 0;
+}
+
+.wikiImg {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.wikiText {
+  font-size: 14px;
+  color: #334155;
+  line-height: 1.6;
+  margin: 0;
+}
