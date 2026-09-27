@@ -40,7 +40,6 @@ export default function Viewer3D({ modelId, onApiReady }) {
   return (
     <main className={styles.viewerContainer}>
       <div className={styles.iframeWrapper}>
-        {/* <p>HAIII</p> */}
         <iframe
           ref={iframeRef}
           title="Ecorche Anatomy Study"
@@ -49,9 +48,6 @@ export default function Viewer3D({ modelId, onApiReady }) {
           allow="autoplay; fullscreen; xr-spatial-tracking; accelerometer; gyroscope"
           xr-spatial-tracking="true"
         />
-        
-        {/* <div>className={styles.touchOverlay}
-        </div> */}
       </div>
     </main>
   );

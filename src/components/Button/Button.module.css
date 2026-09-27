@@ -1,6 +1,6 @@
 .btn {
-  padding: 0.5rem 0.8rem;
-  border-radius: 9999px; /* Pill shape ala gambar inspirasi */
+  padding: 0.65rem 0.8rem;
+  border-radius: 9999px; 
   font-weight: 600;
   font-size: 0.8rem;
   border: none;
@@ -13,23 +13,23 @@
 }
 
 .primary {
-  background-color: #ff6b00;
+  background-color: var(--primary);
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25);
+  box-shadow: var(--btnShadow);
 }
 
 .primary:hover {
-  background-color: #e05e00;
+  background-color: var(--accent-blue);
   transform: translateY(-1px);
 }
 
 .dark {
-  background-color: #0f172a;
+  background-color: var(--dark);
   color: #ffffff;
 }
 
 .dark:hover {
-  background-color: #1e293b;
+  background-color: var(--dark-hover);
 }
 
 .outline {

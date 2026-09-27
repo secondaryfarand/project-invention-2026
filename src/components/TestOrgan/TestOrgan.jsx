@@ -313,7 +313,6 @@ export default function TestOrgan() {
       </button>
       <Sidebar activeOrgan={activeOrgan} onSelectPart={handleSelectParts} />
       <Viewer3D modelId={activeOrgan?.sketchfabId} onApiReady={handleApiReady} />
-      {/* <InfoPanel wikiData={wikiData} loading={loadingWiki} /> */}
       <InfoPanel query={selectedOrgan} />
     </div>
   );

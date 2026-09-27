@@ -1,19 +1,32 @@
-import { NavLink } from 'react-router-dom';
-import React from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import Button from '../Button/Button';
 import styles from './Navbar.module.css';
 
 export default function Navbar({ onNavigateDashboard }) {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className={styles.navbar}>
-      <div className={styles.container}>
-        {/* Brand Logo */}
-        <div className={styles.logo}>
+    <nav className={`${styles.navbar} `}>
+      <div className={`${styles.container} ${isScrolled ? styles.scrolled : ''}`}>
+        <div className={styles.logo} onClick={() => navigate('/')}>
           <span className={styles.logoBadge}>🧬</span>
           <span className={styles.logoText}>AnatoMed</span>
         </div>
 
-        {/* Menu Navigasi */}
         <ul className={styles.navMenu}>
           <li className={styles.navItem}>
             <NavLink 
@@ -22,16 +35,23 @@ export default function Navbar({ onNavigateDashboard }) {
                 `${styles.navLink} ${isActive ? styles.active : ''}`
               }
             >
-              <span className={styles.mobileIcon}>👥</span>
-              <span>Beranda</span>
+              <span className={styles.mobileIcon}><i className="icon fa-solid fa-house-chimney-window"></i></span>
+              <span className={styles.navText}>Beranda</span>
             </NavLink>
           </li>
+
           <li className={styles.navItem}>
-            <a href="tentang" className={styles.navLink}>
-              <span className={styles.mobileIcon}>👥</span>
-              <span>Tentang Kami</span>
-            </a>
+            <NavLink 
+              to="/tentang" 
+              className={({ isActive }) => 
+                `${styles.navLink} ${isActive ? styles.active : ''}`
+              }
+            >
+              <span className={styles.mobileIcon}><i className="icon fa-solid fa-circle-info"></i></span>
+              <span className={styles.navText}>Tentang Kami</span>
+            </NavLink>
           </li>
+
           <li className={styles.navItem}>
             <NavLink 
               to="/eksplorasi" 
@@ -39,8 +59,8 @@ export default function Navbar({ onNavigateDashboard }) {
                 `${styles.navLink} ${isActive ? styles.active : ''}`
               }
             >
-              <span className={styles.mobileIcon}>🔍</span>
-              <span>Eksplorasi</span>
+              <span className={styles.mobileIcon}><i className="icon fa-solid fa-compass"></i></span>
+              <span className={styles.navText}>Eksplorasi</span>
             </NavLink>
           </li>
 
@@ -51,27 +71,21 @@ export default function Navbar({ onNavigateDashboard }) {
                 `${styles.navLink} ${isActive ? styles.active : ''}`
               }
             >
-              <span className={styles.mobileIcon}>🎯</span>
-              <span>Kuis Medis</span>
-            </NavLink>
-          </li>
-
-          <li className={styles.navItem}>
-            <NavLink 
-              to="/menu" 
-              className={({ isActive }) => 
-                `${styles.navLink} ${isActive ? styles.active : ''}`
-              }
-            >
-              <span className={styles.mobileIcon}>🎯</span>
-              <span>Menu</span>
+              <span className={styles.mobileIcon}><i className="icon fa-solid fa-clipboard-question"></i></span>
+              <span className={styles.navText}>Kuis Medis</span>
             </NavLink>
           </li>
         </ul>
 
         <div className={styles.ctaWrapper}>
-          <Button variant="dark" onClick={onNavigateDashboard}>
-            Dashboard <span className={styles.arrowIcon}>↗</span>
+          <Button 
+            variant="dark" 
+            onClick={() => {
+              if (onNavigateDashboard) onNavigateDashboard();
+              navigate('/dashboard');
+            }}
+          >
+            Dashboard
           </Button>
         </div>
       </div>

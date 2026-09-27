@@ -5,16 +5,23 @@ import styles from './Header.module.css';
 export default function Header({ onExploreClick, onDashboardClick }) {
   return (
     <header className={styles.heroSection}>
+      <div className={styles.darkBackground} />
+      <video
+        className={styles.bgVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+        >
+        <source src="/assets/preview-1-skull.webm" type="video/webm" />
+        <source src="/assets/hero-bg.mp4" type="video/mp4" />
+      </video>
+      <div className={styles.videoDarkOverlay} />
+
       <div className={styles.container}>
         
-        <div className={styles.topRow}>
-          <div className={styles.headingBox}>
-            <h1 className={styles.mainTitle}>
-              Pelajari Anatomi & Organ<span className={styles.gradientText}>Tubuh </span> <br />
-              secara <span className={styles.gradientText}>Interaktif & Presisi</span>
-            </h1>
-          </div>
-
+        {/* <div className={styles.topRow}>
+          
           <div className={styles.ratingBox}>
             <div className={styles.avatars}>
               <span className={styles.avatar}>🎓</span>
@@ -26,10 +33,21 @@ export default function Header({ onExploreClick, onDashboardClick }) {
               <span>Dipercayai 1,000+ Mahasiswa Medis</span>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        {/* Gambar Utama Hero (Large Rounded Card) */}
+        
         <div className={styles.heroCard}>
+          <div className={styles.logo} onClick={() => navigate('/')}>
+            <span className={styles.logoBadge}>🧬</span>
+            <span className={styles.logoText}>AnatoMed</span>
+          </div>
+          <div className={styles.headingBox}>
+            <h1 className={styles.mainTitle}>
+              Pelajari Anatomi & Organ <span className={styles.gradientText}>Tubuh </span> <br />
+              secara <span className={styles.gradientText}>Interaktif & Presisi</span>
+            </h1>
+          </div>
+
           <div className={styles.cardOverlay}>
             <div className={styles.tagGroup}>
               <span className={styles.tag}>Interaktif 3D ▶</span>

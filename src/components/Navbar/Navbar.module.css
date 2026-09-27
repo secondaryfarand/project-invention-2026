@@ -1,27 +1,43 @@
 .navbar {
   position: fixed;
-  top: 1.25rem;
+  top: 0.6rem;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
-  max-width: 1100px; /* Samakan nilai ini dengan max-width komponen di bawahnya */
-  padding: 0;        /* Hilangkan padding luar agar tidak meluber ke samping */
+  width: 85%; 
+  padding: 0;        
   z-index: 1000;
   box-sizing: border-box;
 }
 
+.container.scrolled {
+  background-color: rgba(255, 255, 255, 0.85);
+  transition: 0.4s;
+  box-shadow: 0 7px 15px -3px inset rgba(67, 67, 67, 0.327);
+}
+.container.scrolled:hover {
+  box-shadow: 0 7px 15px -3px inset rgba(67, 67, 67, 0.055);
+}
+
+.container.scrolled .navLink {
+  color: #5e5e5e;
+}
+.container.scrolled .navLink:hover {
+  color: var(--primary)
+}
+
 .container {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0);
+  -webkit-backdrop-filter: blur(10px); 
+  backdrop-filter: blur(10px);
   padding: 0.75rem 1.25rem;
   border-radius: 9999px; 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   width: 100%;
   box-sizing: border-box;
+  transition: 0.5s;
 }
 
 .logo {
@@ -31,10 +47,15 @@
   font-weight: 700;
   font-size: 0.9rem;
   color: #0f172a;
+  cursor: pointer;
+}
+
+.logoText {
+  color: var(--primary);
 }
 
 .logoBadge {
-  background: #ff6b00;
+  background: var(--primary);
   color: #fff;
   width: 28px;
   height: 28px;
@@ -57,14 +78,14 @@
 .navLink {
   position: relative;
   text-decoration: none;
-  color: #475569;
+  color: #989a9c;
   font-weight: 500;
   font-size: 0.7rem;
   transition: color 0.2s ease;
 }
 
 .navLink.active {
-  color: #ff6b00 !important;
+  color: var(--primary) !important;
   font-weight: 700;
 }
 .navLink.active::after {
@@ -74,41 +95,42 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: #ff6b00;
+  background-color: var(--primary);
   border-radius: 2px;
-  box-shadow: 0 0 8px rgba(255, 107, 0, 0.6);
 }
-
 .navLink:hover {
-  color: #ff6b00;
+  color: var(--primary);
 }
 
 .mobileIcon {
   display: none;
 }
 
+.ctaAnchor {
+  text-decoration: none;
+  color: white;
+}
+
 @media (max-width: 768px) {
   .navbar {
     position: fixed;
     top: auto;
-    bottom: 0;
+    bottom: 0px;
     left: 0;
     transform: none;
     max-width: 100%;
     padding: 0;
+    width: 100%;
+    transform: translateY(65px);
   }
 
   .container {
     border-radius: 0;
-    border-top: 1px solid #e2e8f0;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-    background: #ffffff;
+    background: #ffffff00;
     width: 100%;
     box-sizing: border-box;
     overflow-x: hidden;
-    padding: 0.5rem 0.25rem; 
+    padding: 0.1rem 0.25rem; 
   }
 
   .logo, .ctaWrapper {
@@ -122,7 +144,7 @@
   }
 
   .navLink {
-    padding: 0.35rem 0.4rem;
+    padding: 0.8rem 0.4rem;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
@@ -138,9 +160,19 @@
   }
 
   .navLink.active {
-    color: #ff6b00 !important;
-    /* background: rgba(255, 107, 0, 0.1); */
+    color: var(--primary) !important;
     font-weight: 700;
+  }
+  .navText {
+    display: none;
+  }
+
+  .navbar .container.scrolled {
+    transform: translateY(-65px);
+    transition: 0.2s;
+  }
+  .container.scrolled .navLink {
+    color:#64748b;
   }
 
   .navLink.active .mobileIcon {
@@ -150,5 +182,6 @@
   .mobileIcon {
     display: block;
     font-size: 1.25rem;
+    color: inherit;
   }
 }

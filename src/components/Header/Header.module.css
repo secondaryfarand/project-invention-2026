@@ -1,27 +1,33 @@
 .heroSection {
   padding: 3rem 1.5rem 2rem;
-  max-width: 1100px;
-  margin:  4rem auto 0;
+  width: 90%;
+  margin:  7rem auto 0;
 }
 
-.topRow {
+/* .topRow {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 2rem;
   gap: 2rem;
+  z-index: 2;
+} */
+
+.logo {
+  display: none;
 }
 
 .mainTitle {
-  font-size: 2.35rem;
+  font-size: 4rem;
   font-weight: 800;
   line-height: 1.2;
-  color: #0f172a;
+  color: #ffffff;
   letter-spacing: -0.04em;
+  z-index: 2;
 }
 
 .gradientText {
-  background: linear-gradient(90deg, #18181b 0%, #18181b 55%, #a1a1aa 100%);
+  background: linear-gradient(90deg, #a1a1aa 0%, #27272c 55%, #b1b1b9 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -68,21 +74,58 @@
   font-weight: 500;
 }
 
-/* Card Hero Gambar seperti di Desain Gambar */
 .heroCard {
   height: 420px;
-  border-radius: 28px;
-  background: linear-gradient(135deg, #1e293b, #0f172a);
+  /* border-radius: 28px; */
+  /* background: linear-gradient(135deg, #1e293b, #0f172a); */
   position: relative;
   overflow: hidden;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
   padding: 2rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); */
+}
+.headingBox {
+  z-index: 30;
+}
+
+.darkBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.61); 
+  z-index: 2;
+}
+.bgVideo {
+  position: absolute;
+  top: 0;
+  left: 60%;
+  width: 30%;
+  height: 100%;
+  object-fit: contain; 
+  z-index: 1;
+  -webkit-user-select: none; 
+  -moz-user-select: none;    
+  -ms-user-select: none;     
+  user-select: none;         
+}
+
+/* Lapisan Pemogok/Penggelap Video (Dark Overlay) */
+.videoDarkOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0); 
+  z-index: 0;
 }
 
 .cardOverlay {
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: flex-end;
   width: 100%;
@@ -121,9 +164,25 @@
 }
 
 @media (max-width: 868px) {
+  .heroSection {
+    padding: 0rem 1rem 2rem;
+    width: 90%;
+    margin:  0;
+  }
+
   .topRow {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .bgVideo {
+    object-fit: cover;
+    left: 0;
+    width: 100%;
+    /* display: none; */
+  }
+  .videoDarkOverlay {
+    display: none;
   }
 
   .mainTitle {
@@ -131,8 +190,45 @@
   }
 
   .heroCard {
-    height: 320px;
+    height: 90vh;
+    /* background-color: red; */
+    gap: 20%;
+    margin: 0;
+    padding: 1rem;
   }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #0f172a;
+    cursor: pointer;
+    z-index: 2;
+  }
+  .logoText {
+    color: var(--primary);
+  }
+  .logoBadge {
+    background: var(--primary);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+  }
+
+  .gradientText {
+    background: linear-gradient(90deg, #e8e8ea 0%, #4c4c53 55%, #b1b1b9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+
 
   .cardOverlay {
     flex-direction: column;
@@ -143,5 +239,9 @@
   .cardText {
     align-items: flex-start;
     text-align: left;
+  }
+
+  .bgVideo {
+    left: 0;
   }
 }
