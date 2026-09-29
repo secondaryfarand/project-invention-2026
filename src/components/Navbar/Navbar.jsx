@@ -24,7 +24,7 @@ export default function Navbar({ onNavigateDashboard }) {
       <div className={`${styles.container} ${isScrolled ? styles.scrolled : ''}`}>
         <div className={styles.logo} onClick={() => navigate('/')}>
           <span className={styles.logoBadge}>🧬</span>
-          <span className={styles.logoText}>AnatoMed</span>
+          <span className={styles.logoText}>Tubuh Kita</span>
         </div>
 
         <ul className={styles.navMenu}>
@@ -39,28 +39,28 @@ export default function Navbar({ onNavigateDashboard }) {
               <span className={styles.navText}>Beranda</span>
             </NavLink>
           </li>
-
           <li className={styles.navItem}>
             <NavLink 
-              to="/tentang" 
+              to="/modul" 
               className={({ isActive }) => 
                 `${styles.navLink} ${isActive ? styles.active : ''}`
               }
             >
-              <span className={styles.mobileIcon}><i className="icon fa-solid fa-circle-info"></i></span>
-              <span className={styles.navText}>Tentang Kami</span>
+              <span className={styles.mobileIcon}><i className="icon fa-solid fa-book"></i></span>
+              <span className={styles.navText}>Modul</span>
             </NavLink>
           </li>
 
+
           <li className={styles.navItem}>
             <NavLink 
-              to="/eksplorasi" 
+              to="/anatomi" 
               className={({ isActive }) => 
                 `${styles.navLink} ${isActive ? styles.active : ''}`
               }
             >
               <span className={styles.mobileIcon}><i className="icon fa-solid fa-compass"></i></span>
-              <span className={styles.navText}>Eksplorasi</span>
+              <span className={styles.navText}>Anatomi</span>
             </NavLink>
           </li>
 
@@ -72,20 +72,31 @@ export default function Navbar({ onNavigateDashboard }) {
               }
             >
               <span className={styles.mobileIcon}><i className="icon fa-solid fa-clipboard-question"></i></span>
-              <span className={styles.navText}>Kuis Medis</span>
+              <span className={styles.navText}>Kuis</span>
+            </NavLink>
+          </li>
+          <li className={styles.navItem}>
+            <NavLink 
+              to="/dashboard" 
+              className={({ isActive }) => 
+                `${styles.navLink} ${isActive ? styles.active : ''}`
+              }
+            >
+              <span className={styles.mobileIcon}><i className="icon fa-solid fa-circle-info"></i></span>
+              <span className={styles.navText}>Dashboard</span>
             </NavLink>
           </li>
         </ul>
 
         <div className={styles.ctaWrapper}>
           <Button 
-            variant="dark" 
+            variant="primary" 
             onClick={() => {
               if (onNavigateDashboard) onNavigateDashboard();
-              navigate('/dashboard');
+              navigate('/modul');
             }}
           >
-            Dashboard
+            Mulai Belajar
           </Button>
         </div>
       </div>

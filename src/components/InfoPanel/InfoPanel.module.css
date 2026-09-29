@@ -1,58 +1,77 @@
 .infoPanel {
-  width: 340px;
-  background-color: #ffffff;
-  border-left: 1px solid #e2e8f0;
+  background: rgba(18, 18, 20, 0.75);
+  border-radius: 16px;
   padding: 24px;
-  box-sizing: border-box;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
+  box-sizing: border-box;
+  max-height: calc(100vh - 160px);
+  color: rgb(243, 244, 246);
+}
+
+.infoPanel::-webkit-scrollbar {
+  width: 5px;
+}
+
+.infoPanel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
 }
 
 .sectionTitle {
-  font-size: 16px;
+  font-size: 12px;
+  color: rgb(203, 213, 225);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 0 0 14px 0;
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 6px;
   font-weight: 700;
-  color: #0f172a;
-  margin: 0 0 16px 0;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #f1f5f9;
 }
 
-.statusText {
-  color: #475569;
-  font-style: italic;
-  font-size: 14px;
-  margin-top: 16px;
-}
-
+.statusText,
 .placeholderText {
-  color: #94a3b8;
-  font-style: italic;
-  font-size: 14px;
-  margin-top: 16px;
+  font-size: 13.5px;
+  color: rgb(148, 163, 184);
   line-height: 1.5;
+  margin: 0;
 }
 
 .content {
-  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
 .wikiTitle {
-  font-size: 18px;
-  font-weight: 600;
-  color: #1e293b;
-  margin: 0 0 12px 0;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  margin: 0 0 14px 0;
+  font-weight: 700;
 }
 
 .wikiImg {
   width: 100%;
   max-height: 180px;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 12px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .wikiText {
-  font-size: 14px;
-  color: #334155;
+  color: rgb(203, 213, 225);
   line-height: 1.6;
+  font-size: 13.5px;
   margin: 0;
+}
+
+@media (max-width: 992px) {
+  .infoPanel {
+    width: 100%;
+    max-height: none;
+    overflow-y: visible;
+  }
 }

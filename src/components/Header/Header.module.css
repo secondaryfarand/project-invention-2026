@@ -163,17 +163,22 @@
   line-height: 1.5;
 }
 
+
 @media (max-width: 868px) {
+  .container {
+    margin-top: 0;
+    padding-top: 0;
+  } 
   .heroSection {
     padding: 0rem 1rem 2rem;
     width: 90%;
     margin:  0;
   }
 
-  .topRow {
+  /* .topRow {
     flex-direction: column;
     align-items: flex-start;
-  }
+  } */
 
   .bgVideo {
     object-fit: cover;
@@ -191,8 +196,7 @@
 
   .heroCard {
     height: 90vh;
-    /* background-color: red; */
-    gap: 20%;
+    gap: 18%;
     margin: 0;
     padding: 1rem;
   }

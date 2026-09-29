@@ -1,17 +1,17 @@
 .viewerContainer {
-
-}
-
-
-.iframeWrapper {
-    flex: 1;
   position: relative;
-  background-color: #f1f5f9;
+  background: #121212;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; 
-  touch-action: none;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  min-height: 500px;
+}
+
+.iframeWrapper {
   width: 100%;
   height: 100%;
   position: relative;
@@ -19,13 +19,11 @@
 
 .iframe {
   position: absolute;
-  /* Memperbesar iframe lebih tinggi dan lebar dari container */
   width: 100%;
-  height: calc(100% + 90px); /* Tambah tinggi untuk mendorong bar atas & bawah ke luar */
-  top: -45px;                 /* Sembunyikan bar atas sejauh 45px */
+  height: calc(100% + 90px);
+  top: -45px;
   left: 0;
   border: none;
-  /* pointer-events: none; */
 }
 
 @media (max-width: 1024px) {

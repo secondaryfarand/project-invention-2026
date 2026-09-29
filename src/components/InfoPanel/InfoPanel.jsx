@@ -6,7 +6,6 @@ export default function InfoPanel({ query }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Jika tidak ada query (misal belum ada bagian yang dipilih), kosongkan data
     if (!query) {
       setWikiData(null);
       return;
@@ -17,6 +16,7 @@ export default function InfoPanel({ query }) {
       setLoading(true);
 
       try {
+        /* Sumber Data: Wikipedia REST API v1 (id.wikipedia.org) */
         const url = `https://id.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`;
         const response = await fetch(url);
 
@@ -39,7 +39,7 @@ export default function InfoPanel({ query }) {
     };
 
     fetchWikiData();
-  }, [query]); // Re-fetch otomatis setiap kali 'query' berubah
+  }, [query]);
 
   return (
     <section className={styles.infoPanel}>
@@ -65,53 +65,3 @@ export default function InfoPanel({ query }) {
     </section>
   );
 }
-
-// import React, { useState, useEffect } from 'react';
-
-// export default function InfoPanel({ selectedOrgan }) {
-//   const [data, setData] = useState(null);
-//   const [loading, setLoading] = useState(false);
-
-//   useEffect(() => {
-//     if (!selectedOrgan) return;
-
-//     const fetchMedData = async () => {
-//       setLoading(true);
-//       try {
-//         const res = await fetch(`https://wikipedia.org{selectedOrgan}`);
-//         const result = await res.json();
-//         setData({
-//           title: result.title,
-//           description: result.extract,
-//           img: result.thumbnail?.source,
-//         });
-//       } catch (err) {
-//         console.error("Gagal memuat API Wikipedia", err);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchMedData();
-//   }, [selectedOrgan]);
-
-//   if (!selectedOrgan) {
-//     return <div style={{ padding: '20px', color: '#888' }}>Pilih/Klik salah satu organ 3D untuk melihat informasi medis.</div>;
-//   }
-
-//   return (
-//     <div style={{ padding: '20px', backgroundColor: '#fff', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
-//       {loading ? (
-//         <p>Mengambil data medis terbaru dari API...</p>
-//       ) : data ? (
-//         <div>
-//           <h2 style={{ marginTop: 0, color: '#333' }}>{data.title}</h2>
-//           {data.img && <img src={data.img} alt={data.title} style={{ maxWidth: '100%', borderRadius: '8px', marginBottom: '15px' }} />}
-//           <p style={{ color: '#555', lineHeight: '1.6' }}>{data.description}</p>
-//         </div>
-//       ) : (
-//         <p>Data tidak ditemukan.</p>
-//       )}
-//     </div>
-//   );
-// }

@@ -1,139 +1,137 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { MODULE_DATA } from '../../data/moduleData';
 import { useProgress } from '../../hooks/userProgress';
 import Button from '../../components/Button/Button';
+
+import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
+
 import styles from './ModuleStudy.module.css';
 
-// Master Data Modul Pembelajaran Anatomi
-const MODULE_DATA = [
-  {
-    id: 'jantung',
-    systemId: 'peredarandarah',
-    title: 'Anatomi & Fisiologi Jantung',
-    category: 'Sistem Peredaran Darah',
-    readTime: '5 Menit',
-    badgeTarget: 'ahli_kardiologi',
-    summary: 'Organ berotot sebesar kepalan tangan yang berfungsi memompa darah ke seluruh tubuh.',
-    content: {
-      overview: 'Jantung adalah organ vital dalam sistem kardiovaskular manusia. Berdetak sekitar 100.000 kali per hari, organ ini memompa sekitar 7.500 liter darah setiap harinya untuk mengalirkan oksigen dan nutrisi.',
-      structures: [
-        { name: 'Atrium Kanan', desc: 'Menerima darah kaya karbondioksida dari seluruh tubuh melalui vena cava.' },
-        { name: 'Ventrikel Kanan', desc: 'Memompa darah kotor menuju paru-paru untuk proses pertukaran gas.' },
-        { name: 'Atrium Kiri', desc: 'Menerima darah bersih kaya oksigen yang kembali dari paru-paru.' },
-        { name: 'Ventrikel Kiri', desc: 'Dinding otot paling tebal; memompa darah kaya oksigen ke seluruh tubuh melalui aorta.' }
-      ],
-      clinicalNote: 'Penyakit Jantung Koroner (PJK) terjadi akibat penumpukan plak pada pembuluh darah koroner yang menyuplai otot jantung.'
-    }
-  },
-  {
-    id: 'paruparu',
-    systemId: 'pernapasan',
-    title: 'Sistem Paru-Paru & Respirasi',
-    category: 'Sistem Pernapasan',
-    readTime: '6 Menit',
-    badgeTarget: 'pakar_respirasi',
-    summary: 'Organ utama pertukaran gas oksigen dan karbon dioksida di dalam tubuh.',
-    content: {
-      overview: 'Paru-paru terdiri dari jutaan kantung udara kecil yang disebut alveolus. Di sinilah tempat terjadinya pertukaran gas antara udara luar dan sel darah merah.',
-      structures: [
-        { name: 'Bronkus & Bronkiolus', desc: 'Saluran udara bercabang yang mengarahkan udara dari trakea masuk ke paru-paru.' },
-        { name: 'Alveolus', desc: 'Kantung tipis bermembran tempat terjadinya difusi O2 dan CO2 secara langsung.' },
-        { name: 'Pleura', desc: 'Membran ganda pelindung yang melumasi paru-paru saat mengembang dan mengempis.' }
-      ],
-      clinicalNote: 'Kapasitas vital paru-paru rata-rata orang dewasa berkisar antara 3 hingga 5 liter tergantung postur tubuh dan kebiasaan fisik.'
-    }
-  }
-];
-
 export default function ModuleStudy({ onGoToQuiz }) {
-  const [selectedModule, setSelectedModule] = useState(MODULE_DATA[0]);
-  const [isCompleted, setIsCompleted] = useState(false);
+  const { moduleId } = useParams();
+  const navigate = useNavigate();
   const { progress, markModuleAsRead } = useProgress();
 
-  // Cek apakah modul ini sudah pernah dibaca berdasarkan localStorage
-  const hasBeenRead = progress.readModules.includes(selectedModule.id);
-
-  const handleSelectModule = (moduleItem) => {
-    setSelectedModule(moduleItem);
-    setIsCompleted(false);
-  };
+  const currentModule = MODULE_DATA.find((m) => m.id === moduleId) || MODULE_DATA[0];
+  const hasBeenRead = progress?.readModules?.includes(currentModule.id);
 
   const handleCompleteRead = () => {
-    // 1. Panggil hook untuk menyimpan status ke localStorage
-    markModuleAsRead(selectedModule.id);
-    setIsCompleted(true);
+    markModuleAsRead(currentModule.id);
+  };
+
+  // Handler untuk navigasi ke kuis
+  const handleGoToQuiz = () => {
+    if (onGoToQuiz) {
+      onGoToQuiz(currentModule.id);
+    } else {
+      // Direct otomatis ke halaman kuis modul terkait
+      // navigate(`/kuis/${currentModule.id}`);
+      navigate(`/kuis`);
+    }
   };
 
   return (
-    <div className={styles.container}>
-      {/* Sidebar: List Pilihan Modul */}
-      <aside className={styles.sidebar}>
-        <h3 className={styles.sidebarTitle}>Pilih Modul Belajar</h3>
-        <div className={styles.moduleList}>
-          {MODULE_DATA.map((item) => {
-            const isRead = progress.readModules.includes(item.id);
-            const isActive = selectedModule.id === item.id;
-            return (
-              <div
-                key={item.id}
-                className={`${styles.moduleCard} ${isActive ? styles.activeCard : ''}`}
-                onClick={() => handleSelectModule(item)}
-              >
-                <div className={styles.cardHeader}>
-                  <span className={styles.categoryTag}>{item.category}</span>
-                  {isRead && <span className={styles.checkBadge}>✓ Selesai</span>}
-                </div>
-                <h4>{item.title}</h4>
-                <p>{item.summary}</p>
-                <span className={styles.readTime}>⏱ {item.readTime}</span>
-              </div>
-            );
-          })}
-        </div>
-      </aside>
+    <div className={styles.pageWrapper}>
+      <Navbar />
 
-      {/* Main Area: Reader Materi Lengkap */}
-      <main className={styles.readerArea}>
-        <div className={styles.readerHeader}>
-          <span className={styles.categoryBadge}>{selectedModule.category}</span>
-          <h1>{selectedModule.title}</h1>
-          <p className={styles.overviewText}>{selectedModule.content.overview}</p>
+      <div className={styles.pageContainer}>
+        {/* Top Navigation Bar */}
+        <div className={styles.topBar}>
+          <button className={styles.backBtn} onClick={() => navigate(-1)}>
+            ← Kembali
+          </button>
+          <span className={styles.breadcrumb}>
+            Modul / {currentModule.title}
+          </span>
         </div>
 
-        {/* Detail Struktur Organ */}
-        <section className={styles.sectionBlock}>
-          <h3>Struktur & Bagian Utama</h3>
-          <div className={styles.structureGrid}>
-            {selectedModule.content.structures.map((struct, idx) => (
-              <div key={idx} className={styles.structureCard}>
-                <h4>{struct.name}</h4>
-                <p>{struct.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Catatan Medis / Klinis */}
-        <section className={styles.clinicalBox}>
-          <h4>💡 Catatan Klinis & Edutech</h4>
-          <p>{selectedModule.content.clinicalNote}</p>
-        </section>
-
-        {/* Action Area: Menyimpan ke LocalStorage & Integrasi Kuis */}
-        <div className={styles.actionFooter}>
-          {hasBeenRead || isCompleted ? (
-            <div className={styles.completedBanner}>
-              <span>🎉 Modul ini sudah ditandai selesai! Progres tersimpan di Dashboard.</span>
-              <Button variant="primary" onClick={onGoToQuiz}>
-                Uji Pemahaman di Kuis ↗
-              </Button>
+        <div className={styles.mainLayout}>
+          {/* Sidebar */}
+          <aside className={styles.sidebar}>
+            <h3 className={styles.sidebarTitle}>Daftar Modul</h3>
+            <div className={styles.moduleNavList}>
+              {MODULE_DATA.map((item) => {
+                const isRead = progress?.readModules?.includes(item.id);
+                const isActive = item.id === currentModule.id;
+                return (
+                  <Link
+                    key={item.id}
+                    to={`/modul/${item.id}`}
+                    className={`${styles.navCard} ${isActive ? styles.activeNavCard : ''}`}
+                  >
+                    <div className={styles.cardInfo}>
+                      <span className={styles.categoryTag}>{item.category}</span>
+                      <h4 className={styles.cardTitle}>{item.title}</h4>
+                    </div>
+                    {isRead && <span className={styles.checkBadge}>✓ Selesai</span>}
+                  </Link>
+                );
+              })}
             </div>
-          ) : (
-            <button className={styles.completeBtn} onClick={handleCompleteRead}>
-              Selesai Membaca & Catat Progres
-            </button>
-          )}
+          </aside>
+
+          {/* Main Reader Content */}
+          <main className={styles.readerContent}>
+            {currentModule.image && (
+              <div className={styles.bannerWrapper}>
+                <img
+                  src={currentModule.image}
+                  alt={currentModule.title}
+                  className={styles.heroBanner}
+                />
+              </div>
+            )}
+
+            <div className={styles.headerBlock}>
+              <span className={styles.categoryBadge}>{currentModule.category}</span>
+              <h1 className={styles.title}>{currentModule.title}</h1>
+              <span className={styles.readTime}>⏱ Estimasi Baca: {currentModule.readTime}</span>
+            </div>
+
+            <p className={styles.overview}>{currentModule.content?.overview}</p>
+
+            {currentModule.content?.sections?.map((sec, idx) => (
+              <section key={idx} className={styles.materiSection}>
+                <h2>{sec.heading}</h2>
+                <p>{sec.text}</p>
+                {sec.list && (
+                  <ul className={styles.materiList}>
+                    {sec.list.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                )}
+              </section>
+            ))}
+
+            {currentModule.content?.clinicalNote && (
+              <div className={styles.clinicalBox}>
+                <p>{currentModule.content.clinicalNote}</p>
+              </div>
+            )}
+
+            {/* Action Footer */}
+            <div className={styles.actionFooter}>
+              {hasBeenRead ? (
+                <div className={styles.completedBanner}>
+                  <span>🎉 Modul ini sudah selesai kamu pelajari!</span>
+                  <Button variant="primary" onClick={handleGoToQuiz}>
+                    Uji Pemahaman di Kuis ↗
+                  </Button>
+                </div>
+              ) : (
+                <button className={styles.completeBtn} onClick={handleCompleteRead}>
+                  Selesai Membaca & Tandai Selesai
+                </button>
+              )}
+            </div>
+          </main>
         </div>
-      </main>
+      </div>
+
+      <Footer />
     </div>
   );
 }

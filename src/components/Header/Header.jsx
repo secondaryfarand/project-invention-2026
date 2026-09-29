@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../Button/Button';
 import styles from './Header.module.css';
 
 export default function Header({ onExploreClick, onDashboardClick }) {
+  const navigate = useNavigate();
   return (
     <header className={styles.heroSection}>
       <div className={styles.darkBackground} />

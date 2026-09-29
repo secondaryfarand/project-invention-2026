@@ -1,216 +1,352 @@
-.container {
+/* Layout Wrapper Utama */
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f8fafc;
+}
+
+.pageContainer {
+  flex: 1;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 5.5rem 1rem 2rem 1rem; /* Jarak atas aman dari Navbar */
+  box-sizing: border-box;
+  color: #1e293b;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.backBtn {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #334155;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.backBtn:hover {
+  background: var(--primary, #3b82f6);
+  color: #ffffff;
+  border-color: var(--primary, #3b82f6);
+}
+
+.breadcrumb {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mainLayout {
   display: grid;
   grid-template-columns: 320px 1fr;
   gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
-  color: var(--text-light, #ffffff);
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Sidebar List */
+/* --- SIDEBAR & CUSTOM SCROLLBAR DESKTOP --- */
 .sidebar {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  min-width: 0; /* Mencegah pelebaran grid berlebih */
 }
 
 .sidebarTitle {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  color: #0f172a;
+  margin: 0 0 0.5rem 0;
 }
 
-.moduleList {
+.moduleNavList {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 10px;
+  max-height: 75vh;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
 }
 
-.moduleCard {
-  background: var(--bg-dark-card, #18181b);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 1.25rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
+.moduleNavList::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
 }
 
-.moduleCard:hover {
-  border-color: rgba(255, 107, 0, 0.4);
-  transform: translateY(-2px);
+.moduleNavList::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
 }
 
-.activeCard {
-  border-color: var(--color-accent, #ff6b00) !important;
-  background: linear-gradient(135deg, rgba(255, 107, 0, 0.1) 0%, rgba(24, 24, 27, 1) 100%);
+.moduleNavList::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
 }
 
-.cardHeader {
+.navCard {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.navCard:hover {
+  border-color: var(--primary, #3b82f6);
+}
+
+.activeNavCard {
+  border-color: var(--primary, #3b82f6) !important;
+  background: color-mix(in srgb, var(--primary, #3b82f6) 8%, #ffffff) !important;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--primary, #3b82f6) 20%, transparent);
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
 }
 
 .categoryTag {
-  font-size: 0.75rem;
-  color: var(--color-accent, #ff6b00);
-  font-weight: 600;
+  font-size: 11px;
+  color: var(--primary, #3b82f6);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cardTitle {
+  font-size: 14px;
+  color: #0f172a;
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.4;
+  /* Memastikan teks membungkus dengan rapi tanpa terpotong */
+  white-space: normal;
+  word-break: break-word;
 }
 
 .checkBadge {
-  font-size: 0.75rem;
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
-  padding: 0.2rem 0.5rem;
+  font-size: 11px;
+  background: #dcfce7;
+  color: #166534;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* --- READER KONTEN UTAMA --- */
+.readerContent {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
 }
 
-.moduleCard h4 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1rem;
+.bannerWrapper {
+  width: 100%;
+  height: 260px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
 }
 
-.moduleCard p {
-  font-size: 0.85rem;
-  color: var(--text-muted, #a1a1aa);
-  margin-bottom: 0.75rem;
-  line-height: 1.4;
-}
-
-.readTime {
-  font-size: 0.75rem;
-  color: var(--text-muted, #a1a1aa);
-}
-
-/* Reader Content Area */
-.readerArea {
-  background: var(--bg-dark-card, #18181b);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
-  padding: 2.5rem;
+.heroBanner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .categoryBadge {
   display: inline-block;
-  background: rgba(37, 99, 235, 0.15);
-  color: #3b82f6;
-  padding: 0.35rem 0.85rem;
-  border-radius: 50px;
-  font-size: 0.85rem;
+  background: color-mix(in srgb, var(--primary, #3b82f6) 10%, #ffffff);
+  color: var(--primary, #3b82f6);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: #0f172a;
+  margin: 8px 0;
+  font-weight: 800;
+}
+
+.readTime {
+  font-size: 12px;
+  color: #64748b;
   font-weight: 600;
-  margin-bottom: 1rem;
 }
 
-.readerHeader h1 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-}
-
-.overviewText {
-  font-size: 1.1rem;
+.overview {
+  font-size: 1rem;
   line-height: 1.7;
-  color: #d4d4d8;
+  color: #334155;
+  margin: 1.5rem 0;
+}
+
+.materiSection {
   margin-bottom: 2rem;
 }
 
-.sectionBlock {
-  margin-bottom: 2rem;
+.materiSection h2 {
+  font-size: 1.25rem;
+  color: #0f172a;
+  border-bottom: 2px solid var(--primary, #3b82f6);
+  padding-bottom: 6px;
+  margin-bottom: 12px;
 }
 
-.sectionBlock h3 {
-  font-size: 1.3rem;
-  margin-bottom: 1.25rem;
+.materiList {
+  padding-left: 1.2rem;
+  line-height: 1.7;
+  color: #334155;
 }
 
-.structureGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-.structureCard {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 1.25rem;
-  border-radius: 14px;
-}
-
-.structureCard h4 {
-  color: var(--color-accent, #ff6b00);
-  margin-bottom: 0.5rem;
-}
-
-.structureCard p {
-  font-size: 0.9rem;
-  color: var(--text-muted, #a1a1aa);
-  line-height: 1.5;
+.materiList li {
+  margin-bottom: 8px;
 }
 
 .clinicalBox {
-  background: rgba(255, 107, 0, 0.08);
-  border-left: 4px solid var(--color-accent, #ff6b00);
-  padding: 1.25rem;
+  background: color-mix(in srgb, var(--primary, #3b82f6) 6%, #ffffff);
+  border-left: 4px solid var(--primary, #3b82f6);
+  padding: 1rem 1.25rem;
   border-radius: 0 12px 12px 0;
-  margin-bottom: 2.5rem;
-}
-
-.clinicalBox h4 {
-  margin-bottom: 0.5rem;
-  color: #ff8c38;
-}
-
-.clinicalBox p {
-  margin: 0;
-  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  font-size: 14px;
   line-height: 1.6;
+  color: #1e293b;
 }
 
-/* Action Area */
 .actionFooter {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid #f1f5f9;
   padding-top: 1.5rem;
 }
 
 .completeBtn {
-  background: var(--color-accent, #ff6b00);
+  background: var(--primary, #3b82f6);
   color: #ffffff;
   border: none;
-  padding: 0.85rem 2rem;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 1rem;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 15px;
   cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.completeBtn:hover {
-  background: #e05e00;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--primary, #3b82f6) 30%, transparent);
+  transition: all 0.2s ease;
 }
 
 .completedBanner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(34, 197, 94, 0.1);
-  border: 1px solid rgba(34, 197, 94, 0.3);
-  padding: 1rem 1.5rem;
-  border-radius: 16px;
-  color: #4ade80;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  color: #166534;
+  font-weight: 600;
 }
 
-/* Responsif Mobile */
-@media (max-width: 900px) {
-  .container {
-    grid-template-columns: 1fr;
+/* ========================================================== */
+/* PERBAIKAN TOTAL SCROLL HORIZONTAL & KARTU TERPOTONG DI MOBILE */
+/* ========================================================== */
+@media (max-width: 992px) {
+  .pageContainer {
+    padding-top: 4.5rem;
+    overflow-x: hidden; /* Mencegah seluruh layar HP goyang */
   }
-  .structureGrid {
+
+  .mainLayout {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
   }
-  .completedBanner {
-    flex-direction: column;
-    gap: 1rem;
+
+  .sidebar {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .moduleNavList {
+    display: flex;
+    flex-direction: row;
+    max-height: none;
+    width: 100%;
+    
+    /* Mengaktifkan Scroll Horizontal HP secara Penuh */
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch; /* Smooth scroll di iOS */
+    
+    padding-bottom: 12px;
+    gap: 12px;
+    box-sizing: border-box;
+  }
+
+  .navCard {
+    /* Menentukan lebar kartu yang pas dan tidak tergeser */
+    width: 270px;
+    min-width: 270px;
+    max-width: 270px;
+    flex-shrink: 0; /* Mencegah kartu tergepengkan/terpotong */
+    box-sizing: border-box;
     align-items: flex-start;
+  }
+
+  .cardInfo {
+    width: 100%;
+  }
+
+  .cardTitle {
+    /* Memastikan judul 2 baris terlihat jelas di dalam kartu */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-word;
+  }
+
+  .readerContent {
+    padding: 1.25rem;
+  }
+
+  .bannerWrapper {
+    height: 180px;
   }
 }

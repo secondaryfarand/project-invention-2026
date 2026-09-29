@@ -8,15 +8,13 @@
 .section {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 4rem 1.5rem;
+  padding: 5rem 1.5rem;
 }
 
 .sectionHeader {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
-.sectionHeader:nth-child(1) {
-  /* margin-top: 6rem; */
-}
+
 
 .sectionHeader h2 {
   font-size: 2rem;
@@ -28,6 +26,94 @@
 .sectionHeader p {
   color: #64748b;
   font-size: 0.95rem;
+}
+
+.latarSplitGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 3rem;
+  align-items: center;       
+  margin-top: 2rem;     
+}
+.textContent p {
+  color: #475569;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+  text-align: justify;
+}
+.textContent h3 {
+  padding-bottom: 1rem;
+  font-size: 1.3rem;
+}
+.textContent p:last-child {
+  margin-bottom: 0;
+}
+.latarImageWrapper {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+  transition: box-shadow 0.2s ease;
+}
+.latarLandscapeImage {
+  width: 100%;
+  height: 100%;
+  max-height: 380px;      /* Batas tinggi agar tetap proporsional landscape */
+  object-fit: cover;      /* Mencegah gambar terdistorsi/gepeng */
+  display: block;
+  transition: transform 0.4s ease;
+}
+.latarImageWrapper:hover {
+  box-shadow: none;
+}
+.latarImageWrapper:hover .latarLandscapeImage {
+  transform: scale(1.03);
+}
+
+.fiturItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 3rem;
+  align-items: center;       
+  margin: 0rem 0 15rem;     
+}
+.fiturItem:nth-last-child(1) {      
+  margin: 15rem 0 0rem;
+}
+.fiturItem:nth-child(even) .fiturAngkaWrapper {
+  right: 0;
+  left: none;
+}
+.fiturItem:nth-child(odd) .fiturAngkaWrapper {
+  right: none;
+  left: 0;
+}
+.fiturAngkaWrapper {
+  /* width: 10rem; */
+  height: 12rem;
+  display: flex;
+  justify-content: right;
+  align-items: center; 
+  overflow: hidden;  
+  position: absolute;
+  left: 0;
+  margin: 0 8%;
+  transform: translateY(-2rem);
+  
+}
+.fiturAngka {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  right: 0;
+  font-weight: 900;
+  font-size: 14rem;
+  color: rgba(162, 161, 161, 0.429);
+  z-index: 0;
 }
 
 .bentoGrid {
@@ -85,127 +171,45 @@
   font-weight: 600;
 }
 
-/* Grid Layout 3 Kolom */
 .stepGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
-.iconBadge {
-  width: 56px;
-  height: 56px;
-  background-color: var(--accent-blue);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25);
-}
-
-/* Card Utama */
 .stepCard {
   position: relative;
-  background-color: #f7f8f9;
+  background: linear-gradient(135deg, #4f5153 0%, #09090b 100%);
   border-radius: 28px;
   padding: 3rem 2rem 2.5rem;
   display: flex;
   flex-direction: column;
-  min-height: 380px;
-  overflow: visible; /* Pastikan tidak terpotong */
+  align-items: flex-end;
+  min-height: 80px;
+  overflow: visible; 
 }
 
-/* Wadah Cekungan di Pojok Kanan Bawah Card */
-.notchWrapper {
-  position: absolute;
-  bottom: -2px;
-  right: -2px;
-  width: 70px;
-  height: 70px;
-  background-color: #ffffff; /* Warna background luar halaman */
-  border-top-left-radius: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Cekungan Atas (Concave Corner Top) */
-.notchWrapper::before {
-  content: "";
-  position: absolute;
-  top: -20px;
-  right: 2px;
-  width: 20px;
-  height: 20px;
-  background: transparent;
-  border-bottom-right-radius: 16px;
-  box-shadow: 6px 6px 0 6px #ffffff;
-  pointer-events: none;
-}
-
-/* Cekungan Kiri (Concave Corner Left) */
-.notchWrapper::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: -20px;
-  width: 20px;
-  height: 20px;
-  background: transparent;
-  border-bottom-right-radius: 16px;
-  box-shadow: 6px 6px 0 6px #ffffff;
-  pointer-events: none;
-}
-
-/* Tombol Lingkaran Abu-Abu Terang di Dalam Cekungan */
-.arrowCircleBtn {
-  width: 52px;
-  height: 52px;
-  background-color: #051a44; /* Warna lingkaran abu-abu terang */
-  border: none;
-  border-radius: 50%;
-  font-size: 1.3rem;
-  color: #1a1a1a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.arrowCircleBtn:hover {
-  transform: scale(1.08);
-  background-color: #e2e4e8;
-}
-
-.arrAnchor {
-  color: white;
-}
-
-/* Step 3: Dark Card Style */
 .stepCardActive {
-  background: linear-gradient(135deg, #18181b 0%, #09090b 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, #09090b 100%);
   color: #ffffff;
   align-items: flex-start;
   text-align: left;
   padding: 3rem 2.5rem;
-  justify-content: flex-end; /* Konten berada di bagian bawah card */
+  justify-content: flex-end; 
 }
 
 .activeCardContent {
   width: 100%;
 }
 
-.stepCardActive h3 {
+.stepCard h3 {
   color: #ffffff;
   font-size: 1.8rem;
   margin-bottom: 0.75rem;
 }
 
-.stepCardActive p {
-  color: #a1a1aa;
+.stepCard p {
+  color: #fbfbff;
   margin-bottom: 2rem;
 }
 
@@ -229,7 +233,6 @@
   height: 340px;
   min-height: 340px;
   position: relative;
-  margin: 1.25rem 0;
   border-radius: 20px;
   overflow: hidden;
   
@@ -240,10 +243,9 @@
 }
 
 .viewer3DWrapper:hover {
-border-color: #0284c7; 
+  border-color: #0284c7; 
   box-shadow: 0 12px 30px -5px rgba(2, 132, 199, 0.3), 0 0 15px rgba(2, 132, 199, 0.2);
   transform: translateY(-2px); 
-  /* box-shadow: 0 15px 35px -10px rgba(59, 130, 246, 0.12); */
 }
 
 .iframe3D {
@@ -295,20 +297,43 @@ border-color: #0284c7;
 }
 
 @media (max-width: 868px) {
-  .viewer3DWrapper {
-    height: 300px;
-    min-height: 300px;
+  .pageWrapper:nth-child(1) {
+    margin-top: 0.5rem;
   }
-}
-
-
-@media (max-width: 868px) {
+  .section {
+    padding: 2rem 1.5rem;
+  }
   .sectionHeader:nth-child(1) {
     margin-top: 0rem;
   }
   .sectionHeader h2 {
     line-height: 110%;
   }
+  .latarSplitGrid {
+    margin-top: 0;
+    grid-template-columns: 1fr; 
+    gap: 2rem;
+  }
+  .latarLandscapeImage {
+    max-height: 260px;
+  }
+  
+  .fiturItem {
+    margin: 10rem 0;
+    grid-template-columns: 1fr; 
+    gap: 2rem;
+  }
+  .fiturAngkaWrapper {
+    height: 10rem;
+    transform: translateY(-27rem);
+  }
+  .fiturAngkaWrapper:nth-child(even) {
+    transform: translateY(-18rem);
+  }
+  .fiturAngka {
+    font-size: 10rem;
+  }
+
   .bentoGrid, .stepGrid {
     grid-template-columns: 1fr;
     gap: 2.5rem;

@@ -9,7 +9,7 @@ export default function Menu() {
   const navigate = useNavigate();
 
   const handleCardClick = (organId) => {
-    navigate(`/organ/${organId}`);
+    navigate(`/anatomi/${organId}`);
   };
 
   return (
