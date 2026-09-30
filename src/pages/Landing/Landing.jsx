@@ -110,7 +110,7 @@ export default function Landing({ onGoToDashboard }) {
             </div>
             <h3>Belajar mudah dan lengkap</h3>
             <p>
-              AnatoMed hadir memecahkan masalah ini dengan menghadirkan visualisasi data tingkat lanjut berteknologi tiga dimensi.
+              TubuhKita hadir memecahkan masalah ini dengan menghadirkan visualisasi data tingkat lanjut berteknologi tiga dimensi.
             </p>
           </div>
         </div>
