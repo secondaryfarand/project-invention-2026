@@ -53,7 +53,7 @@
 }
 
 .linkList a:hover {
-  color: #ff6b00;
+  color: var(--primary);
 }
 
 .brandTitle {
@@ -81,7 +81,7 @@
 }
 
 .directionLink:hover {
-  color: #ff6b00;
+  color: var(--primary);
 }
 
 .socialColumn {
@@ -108,41 +108,10 @@
 }
 
 .socialIcons a:hover {
-  background: #ff6b00;
+  background: var(--primary);
   color: #ffffff;
   transform: translateY(-2px);
 }
-
-.badgesSection {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
-}
-
-.badgeCard {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 0.75rem 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.badgeIcon {
-  font-size: 1.1rem;
-}
-
-.badgeText {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #cbd5e1;
-}
-
 .bottomSection {
   display: flex;
   align-items: center;
@@ -169,7 +138,7 @@
 }
 
 .returnTopBtn:hover {
-  color: #ff6b00;
+  color: var(--primary);
 }
 
 @media (max-width: 768px) {
@@ -184,16 +153,6 @@
 
   .socialColumn {
     justify-content: flex-start;
-  }
-
-  .badgesSection {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-  }
-
-  .badgeCard {
-    justify-content: center;
   }
 
   .bottomSection {

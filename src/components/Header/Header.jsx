@@ -1,12 +1,62 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import { useNavigate } from 'react-router-dom';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
 import Button from '../Button/Button';
 import styles from './Header.module.css';
 
-export default function Header({ onExploreClick, onDashboardClick }) {
+gsap.registerPlugin(useGSAP);
+
+export default function Header() {
   const navigate = useNavigate();
+  const headerRef = useRef(null);
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      tl.from(`.${styles.logo}`, {
+        opacity: 0,
+        y: -10,
+        duration: 0.4,
+        clearProps: 'all', 
+      })
+        .from(
+          `.${styles.mainTitle}`,
+          {
+            opacity: 0,
+            y: 15,
+            duration: 0.5,
+            clearProps: 'all',
+          },
+          '-=0.2'
+        )
+        .from(
+          `.${styles.tag}`,
+          {
+            opacity: 0,
+            y: 10,
+            duration: 0.3,
+            stagger: 0.08,
+            clearProps: 'all',
+          },
+          '-=0.2'
+        )
+        .from(
+          `.${styles.cardText}`,
+          {
+            opacity: 0,
+            y: 10,
+            duration: 0.4,
+            clearProps: 'all',
+          },
+          '-=0.2'
+        );
+    },
+    { scope: headerRef }
+  );
   return (
-    <header className={styles.heroSection}>
+    <header className={styles.heroSection} ref={headerRef}>
       <div className={styles.darkBackground} />
       <video
         className={styles.bgVideo}
@@ -22,26 +72,10 @@ export default function Header({ onExploreClick, onDashboardClick }) {
 
       <div className={styles.container}>
         
-        {/* <div className={styles.topRow}>
-          
-          <div className={styles.ratingBox}>
-            <div className={styles.avatars}>
-              <span className={styles.avatar}>🎓</span>
-              <span className={styles.avatar}>👨‍⚕️</span>
-              <span className={styles.avatar}>🔬</span>
-            </div>
-            <div className={styles.ratingText}>
-              <div className={styles.stars}>★★★★★</div>
-              <span>Dipercayai 1,000+ Mahasiswa Medis</span>
-            </div>
-          </div>
-        </div> */}
-
-        
         <div className={styles.heroCard}>
           <div className={styles.logo} onClick={() => navigate('/')}>
-            <span className={styles.logoBadge}>🧬</span>
-            <span className={styles.logoText}>AnatoMed</span>
+            <img className={styles.logoBadge} src="/favicon.svg" alt="" />
+            <span className={styles.logoText}>TubuhKita</span>
           </div>
           <div className={styles.headingBox}>
             <h1 className={styles.mainTitle}>
@@ -52,14 +86,14 @@ export default function Header({ onExploreClick, onDashboardClick }) {
 
           <div className={styles.cardOverlay}>
             <div className={styles.tagGroup}>
-              <span className={styles.tag}>Interaktif 3D ▶</span>
-              <span className={styles.tag}>Pencarian Medis</span>
-              <span className={styles.tag}>Kuis Anatomi</span>
+              <span className={styles.tag}>10 Model 3D Interaktif</span>
+              <span className={styles.tag}>+15 Modul Belajar</span>
+              <span className={styles.tag}>+20 Soal Kuis Anatomi</span>
             </div>
 
             <div className={styles.cardText}>
-              <p>Terhubung langsung dengan API Wikipedia & Model 3D Sketchfab Real-Time.</p>
-              <Button variant="primary" onClick={onDashboardClick}>
+              <p>Terhubung langsung dengan Wikipedia & Model Organ Tiga Dimensi Interaktif</p>
+              <Button variant="primary" onClick={() => navigate('/anatomi')}>
                 Mulai Eksplorasi Sekarang
               </Button>
             </div>

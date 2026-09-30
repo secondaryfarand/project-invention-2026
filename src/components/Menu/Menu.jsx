@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import gsap from 'gsap';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import { ORGAN_LIST } from '../../data/organData';
@@ -7,6 +8,19 @@ import styles from './Menu.module.css';
 
 export default function Menu() {
   const navigate = useNavigate();
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        headerRef.current,
+        { opacity: 0, y: -20 },
+        { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   const handleCardClick = (organId) => {
     navigate(`/anatomi/${organId}`);
@@ -17,11 +31,10 @@ export default function Menu() {
       <Navbar />
 
       <main className={styles.mainContent}>
-        <header className={styles.headerSection}>
-          <span className={styles.badge}>Eksplorasi Katalog</span>
+        <header ref={headerRef} className={styles.headerSection}>
           <h1 className={styles.pageTitle}>Galeri Anatomi Organ 3D</h1>
           <p className={styles.pageSubtitle}>
-            Pilih salah satu model di bawah ini untuk memulai eksplorasi interaktif dan ensiklopedia medis.
+            Pilih salah satu model di bawah ini untuk memulai eksplorasi interaktif dan penjelasan materi Wikipedia.
           </p>
         </header>
 

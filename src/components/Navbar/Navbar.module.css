@@ -43,7 +43,6 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
   font-weight: 700;
   font-size: 0.9rem;
   color: #0f172a;
@@ -55,10 +54,10 @@
 }
 
 .logoBadge {
-  background: var(--primary);
+  /* background: var(--primary); */
   color: #fff;
-  width: 28px;
-  height: 28px;
+  width: 35px;
+  height:35px;
   border-radius: 50%;
   display: flex;
   align-items: center;

@@ -23,8 +23,8 @@ export default function Navbar({ onNavigateDashboard }) {
     <nav className={`${styles.navbar} `}>
       <div className={`${styles.container} ${isScrolled ? styles.scrolled : ''}`}>
         <div className={styles.logo} onClick={() => navigate('/')}>
-          <span className={styles.logoBadge}>🧬</span>
-          <span className={styles.logoText}>Tubuh Kita</span>
+          <img className={styles.logoBadge} src="/favicon.svg" alt="" />
+          <span className={styles.logoText}>TubuhKita</span>
         </div>
 
         <ul className={styles.navMenu}>

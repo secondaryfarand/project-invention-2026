@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import gsap from 'gsap';
 import { MODULE_DATA } from '../../data/moduleData';
 import { useProgress } from '../../hooks/userProgress';
 import Button from '../../components/Button/Button';
@@ -14,20 +15,44 @@ export default function ModuleStudy({ onGoToQuiz }) {
   const navigate = useNavigate();
   const { progress, markModuleAsRead } = useProgress();
 
+  const topBarRef = useRef(null);
+  const sidebarRef = useRef(null);
+  const readerContentRef = useRef(null);
+
   const currentModule = MODULE_DATA.find((m) => m.id === moduleId) || MODULE_DATA[0];
   const hasBeenRead = progress?.readModules?.includes(currentModule.id);
+
+  useEffect(() => {
+    gsap.fromTo(
+      topBarRef.current,
+      { opacity: 0, y: -15 },
+      { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
+    );
+    gsap.fromTo(
+      sidebarRef.current,
+      { opacity: 0, x: -20 },
+      { opacity: 1, x: 0, duration: 0.6, delay: 0.1, ease: 'power2.out' }
+    );
+  }, []);
+
+  useEffect(() => {
+    if (readerContentRef.current) {
+      gsap.fromTo(
+        readerContentRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
+      );
+    }
+  }, [currentModule.id]);
 
   const handleCompleteRead = () => {
     markModuleAsRead(currentModule.id);
   };
 
-  // Handler untuk navigasi ke kuis
   const handleGoToQuiz = () => {
     if (onGoToQuiz) {
       onGoToQuiz(currentModule.id);
     } else {
-      // Direct otomatis ke halaman kuis modul terkait
-      // navigate(`/kuis/${currentModule.id}`);
       navigate(`/kuis`);
     }
   };
@@ -37,8 +62,7 @@ export default function ModuleStudy({ onGoToQuiz }) {
       <Navbar />
 
       <div className={styles.pageContainer}>
-        {/* Top Navigation Bar */}
-        <div className={styles.topBar}>
+        <div ref={topBarRef} className={styles.topBar}>
           <button className={styles.backBtn} onClick={() => navigate(-1)}>
             ← Kembali
           </button>
@@ -48,8 +72,7 @@ export default function ModuleStudy({ onGoToQuiz }) {
         </div>
 
         <div className={styles.mainLayout}>
-          {/* Sidebar */}
-          <aside className={styles.sidebar}>
+          <aside ref={sidebarRef} className={styles.sidebar}>
             <h3 className={styles.sidebarTitle}>Daftar Modul</h3>
             <div className={styles.moduleNavList}>
               {MODULE_DATA.map((item) => {
@@ -72,8 +95,7 @@ export default function ModuleStudy({ onGoToQuiz }) {
             </div>
           </aside>
 
-          {/* Main Reader Content */}
-          <main className={styles.readerContent}>
+          <main ref={readerContentRef} className={styles.readerContent}>
             {currentModule.image && (
               <div className={styles.bannerWrapper}>
                 <img
@@ -112,11 +134,10 @@ export default function ModuleStudy({ onGoToQuiz }) {
               </div>
             )}
 
-            {/* Action Footer */}
             <div className={styles.actionFooter}>
               {hasBeenRead ? (
                 <div className={styles.completedBanner}>
-                  <span>🎉 Modul ini sudah selesai kamu pelajari!</span>
+                  <span>Modul ini sudah selesai kamu pelajari!</span>
                   <Button variant="primary" onClick={handleGoToQuiz}>
                     Uji Pemahaman di Kuis ↗
                   </Button>

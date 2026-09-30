@@ -8,10 +8,9 @@ import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 
 import { ORGAN_LIST } from '../../data/organData';
-import { MUSCLE_CAMERA_PRESETS } from '../../constants/musclePresets';
 import styles from './AnatomiOrgan.module.css';
 
-export default function AnatomiOrgan({onGoToDashboard}) {
+export default function AnatomiOrgan({ onGoToDashboard }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -26,12 +25,18 @@ export default function AnatomiOrgan({onGoToDashboard}) {
   const handleSelectParts = (partsWikiName) => {
     setSelectedOrgan(partsWikiName);
 
-    if (sketchfabApi) {
-      const presetKey = partsWikiName || 'reset';
-      const preset = MUSCLE_CAMERA_PRESETS[presetKey];
-
-      if (preset) {
-        sketchfabApi.setCameraLookAt(preset.eye, preset.target, preset.duration);
+    if (sketchfabApi && activeOrgan) {
+      if (!partsWikiName || partsWikiName === activeOrgan.wikiQuery) {
+        const resetCam = activeOrgan.defaultCamera;
+        if (resetCam) {
+          sketchfabApi.setCameraLookAt(resetCam.eye, resetCam.target, resetCam.duration);
+        }
+      } else {
+        const targetPart = activeOrgan.parts?.find((p) => p.wikiQuery === partsWikiName);
+        if (targetPart?.camera) {
+          const { eye, target, duration } = targetPart.camera;
+          sketchfabApi.setCameraLookAt(eye, target, duration);
+        }
       }
     }
   };
@@ -54,7 +59,3 @@ export default function AnatomiOrgan({onGoToDashboard}) {
   );
 }
 
-
-   
-
-     

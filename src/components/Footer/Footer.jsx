@@ -24,7 +24,7 @@ export default function Footer() {
 
           <div className={styles.column}>
             <span className={styles.sectionLabel}>Informasi</span>
-            <h3 className={styles.brandTitle}>Tubuh Kita</h3>
+            <h3 className={styles.brandTitle}>TubuhKita</h3>
             <p className={styles.address}>
               Tim Web Development ABPS - Building Smarter Communities Through Digital Learning
             </p>
@@ -51,32 +51,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className={styles.badgesSection}>
-          <div className={styles.badgeCard}>
-            <span className={styles.badgeIcon}>⚕️</span>
-            <span className={styles.badgeText}>Sertifikasi Medis</span>
-          </div>
-          <div className={styles.badgeCard}>
-            <span className={styles.badgeIcon}>🎮</span>
-            <span className={styles.badgeText}>3D Interaktif</span>
-          </div>
-          <div className={styles.badgeCard}>
-            <span className={styles.badgeIcon}>⭐</span>
-            <span className={styles.badgeText}>Platform Edukasi #1</span>
-          </div>
-          <div className={styles.badgeCard}>
-            <span className={styles.badgeIcon}>🔒</span>
-            <span className={styles.badgeText}>Privasi Terjamin</span>
-          </div>
-          <div className={styles.badgeCard}>
-            <span className={styles.badgeIcon}>🌱</span>
-            <span className={styles.badgeText}>Inovasi Digital</span>
-          </div>
-        </div>
-
         <div className={styles.bottomSection}>
           <p className={styles.copyright}>
-            © 2026 Tubuh Kita Indonesia. Hak Cipta Dilindungi.
+            © 2026 TubuhKita Indonesia. Hak Cipta Dilindungi.
           </p>
           <button onClick={scrollToTop} className={styles.returnTopBtn}>
             Kembali ke Atas ↑

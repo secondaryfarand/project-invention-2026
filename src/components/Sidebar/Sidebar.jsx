@@ -9,16 +9,14 @@ export default function Sidebar({ activeOrgan, onSelectPart }) {
 
   return (
     <>
-      {/* Tombol Toggle Drawer Khusus Mobile */}
       <button 
         className={styles.mobileToggle} 
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle Menu Anatomi"
       >
-        {isOpen ? '✕ Tutup Menu' : '☰ Pilih Bagian'}
+        {isOpen ? '✕ Tutup Menu' : '☰ Pilih Bagian'} 
       </button>
 
-      {/* Overlay Gelap saat Drawer Terbuka di Mobile */}
       {isOpen && (
         <div 
           className={styles.backdrop} 
@@ -28,10 +26,9 @@ export default function Sidebar({ activeOrgan, onSelectPart }) {
 
       <aside className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
         <div className={styles.header}>
-          <span className={styles.badge}>Preview Model 3D</span>
           <h1 className={styles.title}>{activeOrgan.title}</h1>
           <p className={styles.description}>
-            Eksplorasi struktur lapisan otot utama manusia secara interaktif.
+            Eksplorasi struktur lapisan organ utama manusia beserta bagian-bagiannya secara interaktif.
           </p>
         </div>
 
@@ -64,7 +61,7 @@ export default function Sidebar({ activeOrgan, onSelectPart }) {
               setIsOpen(false);
             }}
           >
-            🔄 Reset Posisi Kamera
+            Reset Posisi Kamera
           </button>
         </div>
 

@@ -4,15 +4,6 @@
   margin:  7rem auto 0;
 }
 
-/* .topRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 2rem;
-  gap: 2rem;
-  z-index: 2;
-} */
-
 .logo {
   display: none;
 }
@@ -76,14 +67,11 @@
 
 .heroCard {
   height: 420px;
-  /* border-radius: 28px; */
-  /* background: linear-gradient(135deg, #1e293b, #0f172a); */
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); */
 }
 .headingBox {
   z-index: 30;
@@ -112,7 +100,6 @@
   user-select: none;         
 }
 
-/* Lapisan Pemogok/Penggelap Video (Dark Overlay) */
 .videoDarkOverlay {
   position: absolute;
   top: 0;
@@ -175,16 +162,12 @@
     margin:  0;
   }
 
-  /* .topRow {
-    flex-direction: column;
-    align-items: flex-start;
-  } */
+
 
   .bgVideo {
     object-fit: cover;
     left: 0;
     width: 100%;
-    /* display: none; */
   }
   .videoDarkOverlay {
     display: none;
@@ -204,7 +187,6 @@
   .logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
     font-weight: 700;
     font-size: 0.9rem;
     color: #0f172a;
@@ -215,7 +197,6 @@
     color: var(--primary);
   }
   .logoBadge {
-    background: var(--primary);
     color: #fff;
     width: 28px;
     height: 28px;

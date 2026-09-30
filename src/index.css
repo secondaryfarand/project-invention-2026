@@ -8,16 +8,15 @@
   --code-bg: #f1f5f9;
   
   --primary: #1e8691; 
-  --accent-blue: #d1c40f;
+  --accent-blue: #2993d5;
   --dark: #0f172a;
   --dark-hover: #51637d;
   --accent-bg: rgba(255, 107, 0, 0.1);
   --accent-border: rgba(255, 107, 0, 0.4);
   
   --shadow: rgba(0, 0, 0, 0.08) 0 10px 15px -3px, rgba(0, 0, 0, 0.04) 0 4px 6px -2px;
-  --btnShadow: 0 4px 12px rgba(162, 255, 0, 0.25);
+  --btnShadow: 0 4px 2px rgba(50, 52, 47, 0.25);
 
-  /* Samakan font Heading ke Plus Jakarta Sans */
   --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;

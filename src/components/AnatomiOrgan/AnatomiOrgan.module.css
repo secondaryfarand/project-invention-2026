@@ -15,26 +15,24 @@
 
 .backButton {
   align-self: flex-start;
-  margin: 5rem 2rem 0.5rem 2rem;
+  margin: 5rem 2rem 0.5rem 11rem;
   padding: 0.6rem 1.2rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  border-radius: 50px;
   color: #e2e8f0;
-  font-family: var(--sans, 'Plus Jakarta Sans', sans-serif);
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);;
 }
 
 .backButton:hover {
-  background: rgba(239, 68, 68, 0.15);
-  border-color: #ef4444;
+  background: rgba(68, 225, 239, 0.15);
+  border-color: var(--primary);
   color: #ffffff;
   transform: translateX(-3px);
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
 }
 
 .mainLayout {
@@ -74,19 +72,6 @@
   border-radius: 10px;
 }
 
-.badge {
-  background: rgba(239, 68, 68, 0.15);
-  color: #ef4444;
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  display: inline-block;
-  align-self: flex-start;
-  letter-spacing: 0.03em;
-}
-
 .title {
   font-family: var(--sans, 'Plus Jakarta Sans', sans-serif);
   font-size: 1.4rem;
@@ -112,7 +97,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 0.85rem;
-  border-bottom: 2px solid #ef4444;
+  border-bottom: 2px solid var(--primary);
   padding-bottom: 0.4rem;
   font-weight: 700;
 }
@@ -149,7 +134,7 @@
 }
 
 .authorLink {
-  color: #ef4444;
+  color: var(--primary);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s ease;
