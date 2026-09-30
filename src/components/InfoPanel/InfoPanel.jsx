@@ -43,7 +43,7 @@ export default function InfoPanel({ query }) {
 
   return (
     <section className={styles.infoPanel}>
-      <h3 className={styles.sectionTitle}>Eksplorasi Ensiklopedia Medis</h3>
+      <h3 className={styles.sectionTitle}>Eksplorasi Wikipedia</h3>
 
       {loading ? (
         <p className={styles.statusText}>

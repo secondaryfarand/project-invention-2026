@@ -69,7 +69,7 @@ export default function Dashboard({ onGoToDashboard }) {
           <div className={styles.metricCard}>
             <span className={styles.metricLabel}>Organ Dipelajari</span>
             <div className={styles.metricValue}>
-              {totalOrgansLearned}<span className={styles.metricTotal}>/12</span>
+              {totalOrgansLearned}<span className={styles.metricTotal}>/17</span>
             </div>
           </div>
 

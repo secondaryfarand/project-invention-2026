@@ -67,6 +67,7 @@ export default function Header() {
         >
         <source src="/assets/preview-1-skull.webm" type="video/webm" />
         <source src="/assets/hero-bg.mp4" type="video/mp4" />
+        {/* sumber : http://youtube.com/watch?v=-OhT1wjWvFs&list=LL&index=19 */}
       </video>
       <div className={styles.videoDarkOverlay} />
 

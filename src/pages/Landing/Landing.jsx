@@ -130,19 +130,21 @@ export default function Landing({ onGoToDashboard }) {
               {organ?.sketchfabId ? (
                 <>
                   <iframe
-                    title="Ecorche Anatomy Study"
+                    title="Model Anatomi"
                     className={styles.iframe3D}
                     src={`https://sketchfab.com/models/${organ.sketchfabId}/embed?autostart=1&preload=1&ui_theme=light&transparent=0`}
                     allow="autoplay; fullscreen; xr-spatial-tracking; accelerometer; gyroscope"
                   />
                   <div className={styles.viewerOverlayHint}>
-                    <i className="fa-solid fa-cube"></i>
+                    <i className="fa-solid fa-cube"></i> 
+                    {/* sumber ikon : font awesome */}
                     <span>Geser untuk Memutar</span>
                   </div>
                 </>
               ) : (
                 <div className={styles.viewerLoading}>
-                  <i className="fa-solid fa-circle-notch fa-spin" style={{ fontSize: '1.5rem', color: '#0284c7' }}></i>
+                  <i className="fa-solid fa-circle-notch fa-spin" style={{ fontSize: '1.5rem', color: '#0284c7' }}></i> 
+                  {/* sumber: font awesome */}
                   <p>Memuat Model Anatomi 3D...</p>
                 </div>
               )}
@@ -172,14 +174,14 @@ export default function Landing({ onGoToDashboard }) {
 
       <section id="eksplorasi" className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2>Tips Belajar dalam 3 Langkah</h2>
+          <h2>Tips Memulai dalam 3 Langkah</h2>
         </div>
 
         <div className={styles.stepGrid}>
           <div className={styles.stepCard}>
             <div className={styles.activeCardContent}>
               <h3>Baca Materi</h3>
-              <p>Evaluasi pemahamanmu dan dapatkan skor secara langsung.</p>
+              <p>Dapatkan akses ke belasan modul belajar yang menarik.</p>
             </div>
           </div>
           <div className={styles.stepCard}>
